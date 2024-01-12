@@ -3,7 +3,7 @@
 
 ## Documentation
 ### Dataset
-Data used in this project is include under the /data folder.
+Data used in this project is include under the /dataset folder.
 Include small and medium size 
 
 ### Installation
@@ -14,7 +14,7 @@ mvn clean package -Puberjar -DskipTests
 ### 
 Open experiment project then build the jar file
 ```shell
-mvn clean package -Puberjar -DskipTests
+mvn clean package -DskipTests
 ```
 ### run command line of experiments
 ```shell
