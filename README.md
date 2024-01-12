@@ -4,7 +4,7 @@
 ## Documentation
 ### Dataset
 Data used in this project is include under the /datasets folder.
-Include small size for CDL and both samm and medium size for Landsat8.
+Include small size for CDL and both samll and medium size for Landsat8.
 
 ### Installation
 Build jar file from : rdpro ptoject folder
