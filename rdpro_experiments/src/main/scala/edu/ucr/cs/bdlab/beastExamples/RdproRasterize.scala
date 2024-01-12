@@ -34,7 +34,7 @@ object RdproRasterize extends CLIOperation{
     val startReadTime: Long = System.nanoTime()
     try {
       val checkRaster = outputs(0)
-      val outputFileCompat = new File(checkRaster + ".dist.tif")
+      val outputFileCompat = new File(checkRaster)
       val e = new Envelope(-180,180,-90,90)
       val rasterW = inputs(0).toInt // 12000 // 25000 // 40000
       val rasterH = inputs(1).toInt // 12000 // 20000 // 30000

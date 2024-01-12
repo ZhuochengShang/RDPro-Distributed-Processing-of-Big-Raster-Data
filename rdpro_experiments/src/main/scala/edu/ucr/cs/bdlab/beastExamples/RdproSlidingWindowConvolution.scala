@@ -13,7 +13,7 @@ import java.io.File
 
 @OperationMetadata(
   shortName = "rdproconv",
-  description = "Computes sliding window",
+  description = "Computes sliding window convolution",
   inputArity = "1",
   outputArity = "1"
 )
