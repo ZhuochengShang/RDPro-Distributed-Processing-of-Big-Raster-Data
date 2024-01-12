@@ -12,7 +12,7 @@ Build jar file from : rdpro ptoject folder
 mvn clean package -Puberjar -DskipTests
 ```
 ### 
-Open experiment project then build the jar file of it
+Open rdpr_experiments project then build the jar file of it
 ```shell
 mvn clean package -DskipTests
 ```
