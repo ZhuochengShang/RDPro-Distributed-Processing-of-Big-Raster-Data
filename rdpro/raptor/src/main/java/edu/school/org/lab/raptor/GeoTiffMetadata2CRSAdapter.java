@@ -94,19 +94,13 @@ import java.util.logging.Logger;
  * by the <code>GeoTiffIIOMetadataDecoder</code> for the purposes of constructing a CoordinateSystem
  * object representative of the information found in the tags.
  *
- *
- *
- *
- *
+
  * <p>To use this class, the <CODE>GeoTiffReader</CODE> should create an instance with the <code>
  * CoordinateSystemAuthorityFactory</code> specified by the <CODE>GeoTiffFormat</CODE> instance
  * which created the reader. The image specific metadata should then be set with the appropriate
  * accessor methods. Finally, the <code>createCoordinateSystem()</code> method is called to produce
  * the <code>CoordinateReferenceSystem</code> object specified by the metadata.
  *
- * @author Bryce Nordgren / USDA Forest Service
- * @author Simone Giannecchini
- * @author Daniele Romagnoli
  */
 public final class GeoTiffMetadata2CRSAdapter {
 

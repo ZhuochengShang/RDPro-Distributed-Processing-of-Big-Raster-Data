@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 University of California, Riverside
+ * Copyright 2018 '""
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ import java.io.ObjectOutput;
 
 /**
  * A canvas that contains an in-memory image backed by a regular Java-provided BufferedImage
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 public class ImageCanvas extends Canvas implements Externalizable, KryoSerializable {

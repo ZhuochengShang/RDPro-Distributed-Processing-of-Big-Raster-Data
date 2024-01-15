@@ -2,14 +2,14 @@ var DaVinci;
 if (typeof DaVinci === "undefined") {
   // Define DaVinci the first time the script is included
   DaVinci = {
-    ServerURL: "https://davinci.cs.ucr.edu/",
-    VisualizeURL: "https://davinci.cs.ucr.edu/" + "dynamic/visualize.cgi/",
+    ServerURL: "https://davinci.cs.edu/",
+    VisualizeURL: "https://davinci.cs.edu/" + "dynamic/visualize.cgi/",
 
     createDataLayer: function (datasetURL) {
       return new ol.layer.Tile({
         source: new ol.source.XYZ({
           url: DaVinci.VisualizeURL + datasetURL + '/tile-{z}-{x}-{y}.png',
-          attributions: 'Powered by <a href="https://davinci.cs.ucr.edu">&copy;DaVinci</a>'
+          attributions: 'Powered by <a href="https://davinci.cs.edu">&copy;DaVinci</a>'
         })
       });
     },

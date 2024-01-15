@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 University of California, Riverside
+ * Copyright 2018 '""
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import org.locationtech.jts.geom.Envelope;
  * Level is the level of the tile starting with 0 at the top.
  * x and y are the index of the column and row of the tile in the grid
  * at this level.
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 public class TileIndex {

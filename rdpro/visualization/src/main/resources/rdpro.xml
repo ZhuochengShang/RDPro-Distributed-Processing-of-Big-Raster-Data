@@ -17,8 +17,7 @@
     <Operation>edu.school.org.lab.davinci.MultilevelPlot</Operation>
     <Operation>edu.school.org.lab.davinci.SingleLevelPlot</Operation>
   </Operations>
-  <!-- Classes that implement the interface edu.ucr.cs.bdlab.davinci.Plotter
-  which are also annotated with annotation edu.ucr.cs.bdlab.davinci.Plotter.Metadata -->
+
   <Plotters>
     <Plotter>edu.school.org.lab.davinci.GeometricPlotter</Plotter>
     <Plotter>edu.school.org.lab.davinci.VectorPlotter</Plotter>

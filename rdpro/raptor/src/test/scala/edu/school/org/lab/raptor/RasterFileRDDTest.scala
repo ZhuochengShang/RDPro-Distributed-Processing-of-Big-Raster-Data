@@ -21,29 +21,6 @@ import java.io.File
 @RunWith(classOf[JUnitRunner])
 class RasterFileRDDTest extends FunSuite with ScalaSparkTest {
 
-  test("sorted tileoffset") {
-    val file = "/Users/clockorangezoe/Documents/phd_projects/data/Raster/Landsat8_Riverside/LC08_L1TP_040037_20211003_20211013_02_T1_refl.tif" //"hdfs://localhost:9000/user/data/LC08_L1TP_039036_20211012_20211019_02_T1_refl4326.tif"
-    //val file = "/Users/clockorangezoe/Documents/phd_projects/data/Raster/20211001_191118_63_240f_3B_Visual.tif"
-    val file_out = "/Users/clockorangezoe/Desktop/Rdpro/LC08_L1GT_001004_20211002_20211013_02_T2_refl_test.tif"
-    val rasterRDDFile: RDD[ITile[Array[Int]]] = sparkContext.geoTiff(file)
-
-    // rasterRDDFile.foreach( tile => println(tile.numComponents))
-
-    //rasterRDDFile.repartition(sparkContext.defaultParallelism)
-    //rasterRDDFile.count()
-    //rasterRDDFile.first()
-
-    val mappedPixel: RDD[ITile[Array[Int]]]= RasterOperationsLocal.mapPixels(rasterRDDFile, (x: Array[Int])=> {
-     x.map(_+10)
-    })
-
-
-    //mappedPixel.foreach( tile => println(tile.numComponents))
-    mappedPixel.foreach(tile => (tile.getPixelValue(tile.x1, tile.y1)))
-    //mappedPixel.count() // should change to get one pixel value?
-    val endTime: Long = System.nanoTime()
-  }
-
   test("Single Partition and number of tiles check"){
     val file = makeResourceCopy("/rasters/glc2000_small.tif")
     val fileTileRDD = new RasterFileRDD(sparkContext, file.toString, new BeastOptions())

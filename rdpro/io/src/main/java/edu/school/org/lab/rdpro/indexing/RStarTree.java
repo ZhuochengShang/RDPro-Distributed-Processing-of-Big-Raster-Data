@@ -1,6 +1,4 @@
 /*
- * Copyright 2018 University of California, Riverside
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -228,7 +226,7 @@ public class RStarTree extends RTreeGuttman {
       }
     }
     // RI2 Sort the entries in decreasing order of their distances
-    // Eldawy: We choose to sort them by increasing order and removing the
+    // We choose to sort them by increasing order and removing the
     // the last p entries because removing the last elements from an array
     // is simpler
     IndexedSortable distanceSortable = new IndexedSortable() {
@@ -251,7 +249,7 @@ public class RStarTree extends RTreeGuttman {
     new QuickSort().sort(distanceSortable, 0, nodeChildren.size());
 
     // RI3 Remove the first p entries from N and adjust the MBR of N
-    // Eldawy: We chose to sort them by (increasing) distance and remove
+    // We chose to sort them by (increasing) distance and remove
     // the last p elements since deletion from the tail of the list is faster
     IntArray entriesToReInsert = new IntArray();
     entriesToReInsert.append(nodeChildren, nodeChildren.size() - p, p);

@@ -1,5 +1,4 @@
 /***********************************************************************
-* Copyright (c) 2015 by Regents of the University of Minnesota.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Apache License, Version 2.0 which 
 * accompanies this distribution and is available at
@@ -14,7 +13,7 @@ import java.io.IOException;
 /**
  * A data descriptor for chunk data.
  * Tag DFTAG_CHUNK
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 public class DDChunkData extends DataDescriptor {

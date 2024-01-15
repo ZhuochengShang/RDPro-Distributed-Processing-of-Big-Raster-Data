@@ -37,7 +37,6 @@ object beastScala {
       // Download from: ftp://ftp2.census.gov/geo/tiger/TIGER2018/STATE/
       val polygons = sparkContext.shapefile("tl_2018_us_state.zip")
       // Load points in GeoJSON format.
-      // Download from https://star.cs.ucr.edu/dynamic/download.cgi/Tweets/index.geojson?mbr=-117.8538,33.2563,-116.8142,34.4099&point
       val points = sparkContext.geojsonFile("Tweets_index.geojson")
 
       // Run a range query

@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 University of California, Riverside
+ * Copyright 2018 '""
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * A partitioner that partitions a file according to an existing set of cells (MBBs). It internally builds an in-memory
  * {@link RRStarTree} for the partitions to speed up the search.
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 @SpatialPartitioner.Metadata(

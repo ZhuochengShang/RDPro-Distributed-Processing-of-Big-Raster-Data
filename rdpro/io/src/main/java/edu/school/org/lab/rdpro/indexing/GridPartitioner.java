@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 University of California, Riverside
+ * Copyright 2018 '""
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ import java.util.Arrays;
  * A partitioner that partitions data using a uniform grid.
  * If a shape overlaps multiple grids, it replicates it to all overlapping
  * partitions.
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 @SpatialPartitioner.Metadata(

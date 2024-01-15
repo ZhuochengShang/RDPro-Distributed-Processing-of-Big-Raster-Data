@@ -1,5 +1,4 @@
 /***********************************************************************
-* Copyright (c) 2015 by Regents of the University of Minnesota.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Apache License, Version 2.0 which 
 * accompanies this distribution and is available at
@@ -25,7 +24,7 @@ import java.util.Map;
 /**
  * A simple graphics class that draws directly on an a BufferedImage and does
  * not require an active X11 display.
- * @author eldawy
+ * @author
  *
  */
 public class SimpleGraphics extends Graphics2D {

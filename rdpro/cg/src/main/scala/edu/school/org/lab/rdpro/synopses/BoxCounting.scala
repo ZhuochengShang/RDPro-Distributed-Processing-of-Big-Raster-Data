@@ -26,7 +26,7 @@ import scala.collection.mutable
 object BoxCounting {
   /**
    * Produce the box counting measure of the given dataset with base q as described in the following paper.
-   *  - Alberto Belussi, Sara Migliorini, and Ahmed Eldawy.
+   *  - Alberto Belussi, Sara Migliorini, and ''.
    *    Skewness-Based Partitioning in SpatialHadoop,
    *    In ISPRS International Journal of Geo-Information (IJGI) 9,
    *    pages 1-19, 2020. (Full text) DOI>10.3390/ijgi9040201

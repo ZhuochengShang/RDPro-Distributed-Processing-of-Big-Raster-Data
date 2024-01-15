@@ -1,6 +1,4 @@
 /*
- * Copyright 2018 University of California, Riverside
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -37,7 +35,7 @@ import java.util.Iterator;
 
 /**
  * An interface for spatially partitioning data into partitions.
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 public abstract class SpatialPartitioner extends Partitioner implements Externalizable, Iterable<EnvelopeNDLite> {

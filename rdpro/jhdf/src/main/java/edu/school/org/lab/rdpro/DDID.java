@@ -1,5 +1,4 @@
 /***********************************************************************
-* Copyright (c) 2015 by Regents of the University of Minnesota.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Apache License, Version 2.0 which 
 * accompanies this distribution and is available at
@@ -11,7 +10,7 @@ package edu.school.org.lab.rdpro;
 /**
  * The full ID of a data descriptor. This class is immutable and its contents
  * are not allowed to change.
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 public class DDID {

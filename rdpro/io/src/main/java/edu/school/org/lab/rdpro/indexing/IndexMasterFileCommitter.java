@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 University of California, Riverside
+ * Copyright 2018 '""
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ import java.io.PrintStream;
 
 /**
  * Output committer that concatenates all master files into one master file.
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 public class IndexMasterFileCommitter extends FileOutputCommitter {

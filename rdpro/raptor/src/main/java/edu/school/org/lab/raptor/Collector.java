@@ -1,6 +1,4 @@
 /*
- * Copyright 2018 University of California, Riverside
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -19,7 +17,6 @@ import java.io.Serializable;
 
 /**
  * An interface for a process that collects pixel values from the raster layer and accumulates them.
- * Created by Ahmed Eldawy on 5/19/2017.
  */
 public interface Collector extends Serializable {
 

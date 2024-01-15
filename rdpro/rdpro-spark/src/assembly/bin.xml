@@ -35,7 +35,7 @@
     <dependencySet>
       <outputDirectory>lib</outputDirectory>
       <includes>
-        <include>edu.school.org.rdpro:jhdf</include>
+        <include>edu.school.org.lab.rdpro:jhdf</include>
         <include>javax.media:jai_core</include>
       </includes>
     </dependencySet>
@@ -48,12 +48,12 @@
 
       <!-- Now, select which projects to include in this module-set. -->
       <includes>
-        <include>edu.school.org.rdpro:common</include>
-        <include>edu.school.org.rdpro:cg</include>
-        <include>edu.school.org.rdpro:io</include>
-        <include>edu.school.org.rdpro:raptor</include>
-        <include>edu.school.org.rdpro:visualization</include>
-        <include>edu.school.org.rdpro:rdpro-spark</include>
+        <include>edu.school.org.lab.rdpro:common</include>
+        <include>edu.school.org.lab.rdpro:cg</include>
+        <include>edu.school.org.lab.rdpro:io</include>
+        <include>edu.school.org.lab.rdpro:raptor</include>
+        <include>edu.school.org.lab.rdpro:visualization</include>
+        <include>edu.school.org.lab.rdpro:rdpro-spark</include>
       </includes>
 
       <binaries>

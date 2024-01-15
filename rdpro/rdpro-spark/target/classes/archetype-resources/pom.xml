@@ -28,15 +28,15 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>edu.school.org.rdpro</groupId>-->
+<!--      <artifactId>commontest</artifactId>-->
+<!--      <version>${beast.version}</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>edu.school.org.rdpro</groupId>
-      <artifactId>commontest</artifactId>
-      <version>${beast.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>edu.school.org.rdpro</groupId>
-      <artifactId>beast-spark</artifactId>
+      <artifactId>rdpro-spark</artifactId>
       <version>${beast.version}</version>
     </dependency>
   </dependencies>

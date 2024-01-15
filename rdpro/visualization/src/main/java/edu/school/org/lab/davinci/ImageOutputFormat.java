@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 University of California, Riverside
+ * Copyright 2018 '""
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,14 +37,14 @@ import java.io.PrintStream;
 
 /**
  * Writes canvases as images to the output file
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 public class ImageOutputFormat extends FileOutputFormat<Object, Canvas> {
 
   /**
    * Writes canvases to a file
-   * @author Ahmed Eldawy
+   * @author ''
    *
    */
   class ImageRecordWriter extends RecordWriter<Object, Canvas> {
@@ -102,7 +102,7 @@ public class ImageOutputFormat extends FileOutputFormat<Object, Canvas> {
   
   /**
    * An output committer that merges all master files into one master file.
-   * @author Ahmed Eldawy
+   * @author ''
    *
    */
   public static class MasterMerger extends FileOutputCommitter {

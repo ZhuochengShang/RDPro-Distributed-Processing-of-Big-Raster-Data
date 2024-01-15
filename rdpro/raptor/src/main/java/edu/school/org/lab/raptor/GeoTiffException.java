@@ -23,8 +23,6 @@ import java.io.StringWriter;
  * configuration of the GeoTIFFWritingUtilities tags. By doing so, it attempts to record enough
  * information so that the maintainers can support it in the future.</p>
  *
- * @author Bryce Nordgren / USDA Forest Service
- * @author Simone Giannecchini
  */
 public final class GeoTiffException extends IOException {
 

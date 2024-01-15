@@ -1,7 +1,4 @@
 /*
- * Copyright (c) 2015 by Regents of the University of Minnesota.
- * Copyright 2018 University of California, Riverside
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +17,7 @@ import java.io.*;
 
 /**
  * An abstract class for any data descriptor
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 public abstract class DataDescriptor {

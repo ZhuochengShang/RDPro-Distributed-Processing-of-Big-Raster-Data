@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 University of California, Riverside
+ * Copyright 2018 '""
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import java.util.Arrays;
 /**
  * An array of bits which is stored efficiently in memory and can be serialized
  * or deserialized using Hadoop serialization framework.
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 public class BitArray implements Writable {

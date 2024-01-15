@@ -1,5 +1,4 @@
 /***********************************************************************
-* Copyright (c) 2015 by Regents of the University of Minnesota.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Apache License, Version 2.0 which 
 * accompanies this distribution and is available at
@@ -17,7 +16,7 @@ import java.util.function.BiFunction;
 
 /**
  * Some primitives to provide parallel processing over arrays and lists
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 public class Parallel {
@@ -28,7 +27,7 @@ public class Parallel {
   
   /**
    * An interface that is implemented by users to loop over a partial array.
-   * @author Ahmed Eldawy
+   * @author ''
    *
    */
   public static class RunnableRangeThread<T> extends Thread {

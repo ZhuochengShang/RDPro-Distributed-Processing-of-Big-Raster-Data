@@ -1,5 +1,4 @@
 // Uncomment the next line to use the production server
-//var serverAddress = "http://raptor.cs.ucr.edu";
 var serverAddress = "";
 
 var map;

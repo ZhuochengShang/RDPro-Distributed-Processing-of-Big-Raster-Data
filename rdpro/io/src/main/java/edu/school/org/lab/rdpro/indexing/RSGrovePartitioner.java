@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 University of California, Riverside
+ * Copyright 2018 '""
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ import java.util.Random;
  * An implementation of the R*-Grove partitioner. This partitioner uses the method
  * {@link RStarTree#partitionPoints(double[][], int, int, boolean, double, AuxiliarySearchStructure)}
  * to partition a sample of points into rectangles.
- * @author Ahmed Eldawy
+ * @author ''
  *
  */
 @SpatialPartitioner.Metadata(

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 University of California, Riverside
+ * Copyright 2022 '""
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -102,7 +102,7 @@ class DBFWriter(out: OutputStream, schema: StructType) extends AutoCloseable {
     for (iField <- fieldDescriptors.indices)
       fieldDescriptors(iField) = DBFFieldDescriptor(schema.fieldNames(iField),
         fieldTypes(iField).toShort, fieldLengths(iField), fieldDecimalCounts(iField), 0, 0)
-    DBFHeader(3, new java.util.Date(), numRecords, headerSize, recordSize, 0, 0, 0, 0, "UCRbeast", fieldDescriptors, null)
+    DBFHeader(3, new java.util.Date(), numRecords, headerSize, recordSize, 0, 0, 0, 0, "beast", fieldDescriptors, null)
   }
 
   override def close(): Unit = {

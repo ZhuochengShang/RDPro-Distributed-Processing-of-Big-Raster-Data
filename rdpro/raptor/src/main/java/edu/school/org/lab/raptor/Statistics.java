@@ -1,6 +1,5 @@
 /*
- * Copyright 2018 University of California, Riverside
- *
+
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -24,7 +23,7 @@ package edu.school.org.lab.raptor;
  *   <li>Min: The minimum value</li>
  *   <li>Max: The maximum value</li>
  * </ul>
- * Created by Ahmed Eldawy on 5/16/2017.
+ * Created by '' on 5/16/2017.
  */
 public class Statistics implements Collector {
   /**The summation of all values represented by this object*/
