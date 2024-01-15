@@ -74,4 +74,3 @@ rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0
 ```shell
 rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdproraster 12000 12000 output_raster.tif
 ```
-
