@@ -20,7 +20,7 @@ object RdproRasterWriterDistribute extends CLIOperation {
 
     val conf = new SparkConf().setAppName("Write Raster RDD")
     // Set Spark master to local if not already set
-    //if (!conf.contains("spark.master"))
+    if (!conf.contains("spark.master"))
       conf.setMaster("local[*]")
 
     val spark: SparkSession = SparkSession.builder().config(conf).getOrCreate()
