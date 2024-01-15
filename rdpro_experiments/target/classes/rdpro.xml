@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdpro>
+  <!-- Classes that implement the interface edu.school.org.lab.io.FeatureReader
+  which are also annotated with class edu.school.org.lab.io.FeatureReader.Metadata -->
+  <Readers>
+    <Reader>edu.school.org.lab.rdproExperiments.RoadsReader</Reader>
+  </Readers>
+
+  <Operations>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproRasterReader</Operation>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproRasterWriterDistribute</Operation>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproRasterWriterCompatability</Operation>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproReshapeProject</Operation>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproReshapeScale</Operation>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproMapPixel</Operation>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproFilterPixel</Operation>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproOverlay</Operation>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproFlatten</Operation>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproRasterize</Operation>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproSlidingWindow</Operation>
+    <Operation>edu.school.org.lab.rdproExperiments.RdproSlidingWindowConvolution</Operation>
+  </Operations>
+
+  <Plotters>
+    <Plotter>edu.school.org.lab.rdproExperiments.ClusterPlotter</Plotter>
+  </Plotters>
+
+</rdpro>
