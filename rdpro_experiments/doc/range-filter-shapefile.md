@@ -63,13 +63,13 @@ Below is the
 [complete code](https://bitbucket.org/eldawy/beast-examples/src/master/src/main/java/edu/ucr/cs/bdlab/beastExamples/FilterFeatures.java)
 that you can run.
 ```java
- package edu.ucr.cs.bdlab.beastExamples;
+ package edu.school.org.lab.rdproExamples;
  
- import edu.ucr.cs.bdlab.geolite.Envelope;
- import edu.ucr.cs.bdlab.geolite.IFeature;
- import edu.ucr.cs.bdlab.io.SpatialInputFormat;
- import edu.ucr.cs.bdlab.sparkOperations.SpatialReader;
- import edu.ucr.cs.bdlab.util.UserOptions;
+ import edu.school.org.lab.geolite.Envelope;
+ import edu.school.org.lab.geolite.IFeature;
+ import edu.school.org.lab.io.SpatialInputFormat;
+ import edu.school.org.lab.sparkOperations.SpatialReader;
+ import edu.school.org.lab.util.UserOptions;
  import org.apache.spark.api.java.JavaRDD;
  import org.apache.spark.api.java.JavaSparkContext;
  
@@ -109,6 +109,6 @@ mvn package
 Run the JAR using `spark-submit` as shown below assuming that the generated JAR file is named `beast-examples-0.2.0.jar`
 
 ```shell
-spark-submit --packages edu.ucr.cs.bdlab:beast-spark:0.9.0 \
-    --class edu.ucr.cs.bdlab.beastExamples.FilterFeatures target/beast-examples-0.9.0.jar
+spark-submit --packages edu.school.org.lab:beast-spark:0.9.0 \
+    --class edu.school.org.lab.rdproExamples.FilterFeatures target/beast-examples-0.9.0.jar
 ```

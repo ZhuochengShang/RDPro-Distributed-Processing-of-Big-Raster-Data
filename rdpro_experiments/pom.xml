@@ -4,8 +4,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>edu.ucr.cs.bdlab</groupId>
-  <artifactId>beast-examples</artifactId>
+  <groupId>edu.school.org.lab</groupId>
+  <artifactId>rdpro-experiments</artifactId>
   <version>0.10.0-SNAPSHOT</version>
 
   <properties>
@@ -28,8 +28,8 @@
     </dependency>
 
     <dependency>
-      <groupId>edu.ucr.cs.bdlab</groupId>
-      <artifactId>beast-spark</artifactId>
+      <groupId>edu.school.org.lab</groupId>
+      <artifactId>rdpro-spark</artifactId>
       <version>0.10.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
@@ -67,13 +67,13 @@
         <configuration>
           <artifactSet>
             <includes>
-              <include>edu.ucr.cs.bdlab:beast-spark</include>
-              <include>edu.ucr.cs.bdlab:cg</include>
-              <include>edu.ucr.cs.bdlab:common</include>
-              <include>edu.ucr.cs.bdlab:io</include>
-              <include>edu.ucr.cs.bdlab:raptor</include>
-              <include>edu.ucr.cs.bdlab:visualization</include>
-              <include>edu.ucr.cs.bdlab:jhdf</include>
+              <include>edu.school.org.lab:rdpro-spark</include>
+              <include>edu.school.org.lab:cg</include>
+              <include>edu.school.org.lab:common</include>
+              <include>edu.school.org.lab:io</include>
+              <include>edu.school.org.lab:raptor</include>
+              <include>edu.school.org.lab:visualization</include>
+              <include>edu.school.org.lab:jhdf</include>
               <include>org.locationtech.jts:jts-core</include>
               <!-- org.mortbay.jetty:jetty + dependencies -->
               <include>org.mortbay.jetty:jetty</include>
@@ -118,15 +118,15 @@
               </excludes>
             </filter>
           </filters>
-          <finalName>beast-uber-examples-${project.version}</finalName>
+          <finalName>rdpro-uber-examples-${project.version}</finalName>
           <outputDirectory>target/</outputDirectory>
           <transformers>
             <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-              <mainClass>edu.ucr.cs.bdlab.beast.operations.Main</mainClass>
+              <mainClass>edu.school.org.lab.rdpro.operations.Main</mainClass>
             </transformer>
             <!-- Merge configuration files from all modules -->
             <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
-              <resource>beast.xml</resource>
+              <resource>rdpro.xml</resource>
             </transformer>
           </transformers>
         </configuration>

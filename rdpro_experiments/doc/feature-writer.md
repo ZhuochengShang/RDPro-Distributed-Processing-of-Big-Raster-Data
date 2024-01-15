@@ -64,7 +64,7 @@ To make your new writer accessible to all components of Beast, includingn the co
 add the following lines to the file `beast.xml`
 ```xml
 <Writers>
-  <Writer>edu.ucr.cs.bdlab.beastExamples.NewWriter</Writer>
+  <Writer>edu.school.org.lab.rdproExamples.NewWriter</Writer>
 </Writers>
 ```
 ## How to use your new writer
@@ -82,7 +82,7 @@ mvn package
 Let's say the generated JAR file is called `beast-example.jar`.
 Now you can run the following command:
 ```shell
-spark-submit --packages edu.ucr.cs.bdlab:beast-spark:0.9.0 \
-    --class edu.ucr.cs.bdlab.beast.operations.Main beast-example.jar \
+spark-submit --packages edu.school.org.lab:beast-spark:0.9.0 \
+    --class edu.school.org.lab.rdpro.operations.Main beast-example.jar \
     cat ne_10m_airports.zip iformat:shapefile airports.xyz oformat:newwriter
 ```
