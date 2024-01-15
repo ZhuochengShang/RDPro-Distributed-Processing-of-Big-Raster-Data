@@ -1,0 +1,6 @@
+edu.school.org.lab.rdpro.io.geojsonv2.GeoJSONSourcev2
+edu.school.org.lab.rdpro.io.shapefilev2.ShapefileDataSourcev2
+edu.school.org.lab.rdpro.io.RTreeSource
+edu.school.org.lab.rdpro.io.gpxv2.GPXSource
+edu.school.org.lab.rdpro.io.kmlv2.KMLSourcev2
+edu.school.org.lab.rdpro.io.kmlv2.KMZSourcev2

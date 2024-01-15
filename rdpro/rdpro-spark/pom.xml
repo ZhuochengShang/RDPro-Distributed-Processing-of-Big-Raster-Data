@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>rdpro</artifactId>
+        <groupId>edu.school.org.lab</groupId>
+        <version>0.10.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>rdpro-spark</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>edu.school.org.lab</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>edu.school.org.lab</groupId>
+            <artifactId>commontest</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>edu.school.org.lab</groupId>
+            <artifactId>io</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>edu.school.org.lab</groupId>
+            <artifactId>visualization</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>edu.school.org.lab</groupId>
+            <artifactId>cg</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>edu.school.org.lab</groupId>
+            <artifactId>raptor</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${scala.compat.version}</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_${scala.compat.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>edu.school.org.lab</groupId>
+            <artifactId>io</artifactId>
+            <version>0.10.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>3.1.1</version>
+            </extension>
+        </extensions>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>edu.school.org.lab.rdpro.operations.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>distro-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>../target</outputDirectory>
+                            <finalName>rdpro-${project.version}</finalName>
+                            <descriptors>
+                                <descriptor>src/assembly/bin.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>uberjar</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <version>3.1.1</version>
+
+                        <configuration>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <outputDirectory>../target/</outputDirectory>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>edu.school.org.lab.rdpro.operations.Main</mainClass>
+                                    <manifestEntries>
+                                        <!-- These entries are required for some ImageIO features to work -->
+                                        <Specification-Vendor>BDLab</Specification-Vendor>
+                                        <Implementation-Vendor>BDLab</Implementation-Vendor>
+                                        <Implementation-Version>${project.version}</Implementation-Version>
+                                    </manifestEntries>
+                                </transformer>
+                                <!-- This bit merges the various GeoTools META-INF/services files         -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+                                <!-- Merge configuration files from all modules -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                                    <resource>rdpro.xml</resource>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>uberjar</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactSet>
+                                        <includes>
+                                            <include>edu.school.org.lab:cg</include>
+                                            <include>edu.school.org.lab:common</include>
+                                            <include>edu.school.org.lab:io</include>
+                                            <include>edu.school.org.lab:raptor</include>
+                                            <include>edu.school.org.lab:visualization</include>
+                                            <include>edu.school.org.lab:jhdf</include>
+                                            <include>org.locationtech.jts:jts-core</include>
+                                            <!-- org.mortbay.jetty:jetty + dependencies -->
+                                            <include>org.mortbay.jetty:jetty</include>
+                                            <include>org.mortbay.jetty:jetty-util</include>
+                                            <include>org.mortbay.jetty:servlet-api</include>
+                                            <!-- /org.mortbay.jetty:jetty + dependencies -->
+                                            <!-- org.eclipse.jetty:jetty-server and jetty-servlet -->
+                                            <include>org.eclipse.jetty:jetty-server</include>
+                                            <include>org.eclipse.jetty:jetty-servlet</include>
+                                            <!-- org.geotools:gt-epsg-hsql + dependencies -->
+                                            <include>org.geotools:gt-epsg-hsql</include>
+                                            <include>org.geotools:gt-referencing</include>
+                                            <include>org.geotools:gt-metadata</include>
+                                            <include>org.geotools:gt-opengis</include>
+                                            <include>org.geotools.ogc:net.opengis.ows</include>
+                                            <include>org.geotools.ogc:org.w3.xlink</include>
+                                            <include>org.hsqldb:hsqldb</include>
+                                            <include>org.eclipse.emf:org.eclipse.emf.common</include>
+                                            <include>org.eclipse.emf:org.eclipse.emf.ecore</include>
+                                            <include>org.eclipse.emf:org.eclipse.emf.ecore.xmi</include>
+                                            <include>systems.uom:systems-common-java8</include>
+                                            <include>tec.uom:uom-se</include>
+                                            <include>tec.uom.lib:uom-lib-common</include>
+                                            <include>si.uom:si-quantity</include>
+                                            <include>si.uom:si-units-java8</include>
+                                            <include>javax.measure:unit-api</include>
+                                            <include>javax:javaee-api</include>
+                                            <include>javax.media:jai_core</include>
+                                            <include>com.sun.mail:javax.mail</include>
+                                            <include>org.ejml:ejml-ddense</include>
+                                            <include>org.ejml:ejml-core</include>
+                                            <include>commons-pool:commons-pool</include>
+                                            <include>jgridshift:jgridshift-core</include>
+                                            <include>net.sf.geographiclib:GeographicLib-Java</include>
+                                            <!-- /org.geotools:gt-epsg-hsql + dependencies -->
+                                        </includes>
+                                    </artifactSet>
+                                    <finalName>rdpro-uber-${project.version}</finalName>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

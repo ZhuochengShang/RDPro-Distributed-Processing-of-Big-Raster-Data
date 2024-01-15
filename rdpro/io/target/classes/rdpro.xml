@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<rdpro>
+  <Operations>
+    <Operation>edu.school.org.lab.rdpro.io.Cat</Operation>
+  </Operations>
+  <!-- Classes that implement the interface SpatialPartitioner
+    which are also annotated with class SpatialPartitioner.Metadata -->
+  <SpatialPartitioners>
+    <Partitioner>edu.school.org.lab.rdpro.indexing.GridPartitioner</Partitioner>
+    <Partitioner>edu.school.org.lab.rdpro.indexing.KDTreePartitioner</Partitioner>
+    <Partitioner>edu.school.org.lab.rdpro.indexing.AbstractRTreeBBPartitioner$RTreeGuttmanBBPartitioner</Partitioner>
+    <Partitioner>edu.school.org.lab.rdpro.indexing.AbstractRTreeBBPartitioner$RStarTreeBBPartitioner</Partitioner>
+    <Partitioner>edu.school.org.lab.rdpro.indexing.AbstractRTreeBBPartitioner$RRStarTreeBBPartitioner</Partitioner>
+    <Partitioner>edu.school.org.lab.rdpro.indexing.HCurvePartitioner</Partitioner>
+    <Partitioner>edu.school.org.lab.rdpro.indexing.RGrovePartitioner</Partitioner>
+    <Partitioner>edu.school.org.lab.rdpro.indexing.RSGrovePartitioner</Partitioner>
+    <Partitioner>edu.school.org.lab.rdpro.indexing.RRSGrovePartitioner</Partitioner>
+    <Partitioner>edu.school.org.lab.rdpro.indexing.STRPartitioner</Partitioner>
+    <Partitioner>edu.school.org.lab.rdpro.indexing.ZCurvePartitioner</Partitioner>
+  </SpatialPartitioners>
+
+  <!-- Classes that implement the interface FeatureWriter
+  which are also annotated with class FeatureWriter.Metadata -->
+  <Writers>
+    <Writer>edu.school.org.lab.rdpro.io.CSVFeatureWriter</Writer>
+    <Writer>edu.school.org.lab.rdpro.io.shapefile.ShapefileFeatureWriter</Writer>
+    <Writer>edu.school.org.lab.rdpro.io.shapefile.CompressedShapefileWriter</Writer>
+    <Writer>edu.school.org.lab.rdpro.io.GeoJSONFeatureWriter</Writer>
+    <Writer>edu.school.org.lab.rdpro.io.KMLFeatureWriter</Writer>
+    <Writer>edu.school.org.lab.rdpro.io.KMZFeatureWriter</Writer>
+    <Writer>edu.school.org.lab.rdpro.indexing.RTreeFeatureWriter</Writer>
+    <Writer>edu.school.org.lab.rdpro.io.JsonWKTWriter</Writer>
+  </Writers>
+
+  <!-- Classes that implement the interface FeatureReader
+  which are also annotated with class FeatureReader.Metadata -->
+  <Readers>
+    <Reader>edu.school.org.lab.rdpro.io.CSVFeatureReader</Reader>
+    <Reader>edu.school.org.lab.rdpro.io.shapefile.ShapefileFeatureReader</Reader>
+    <Reader>edu.school.org.lab.rdpro.io.GeoJSONFeatureReader</Reader>
+    <Reader>edu.school.org.lab.rdpro.io.GPXReader</Reader>
+    <Reader>edu.school.org.lab.rdpro.indexing.RTreeFeatureReader</Reader>
+    <Reader>edu.school.org.lab.rdpro.io.JsonWKTReader</Reader>
+  </Readers>
+</rdpro>
