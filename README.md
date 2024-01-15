@@ -7,7 +7,7 @@ Data used in this project is include under the /datasets folder.
 Include small size for CDL and both samll and medium size for Landsat8.
 
 ### Installation
-Build jar file from : rdpro_code ptoject folder
+Build jar file from : rdpro ptoject folder
 ```shell
 mvn clean package -Puberjar -DskipTests
 ```
