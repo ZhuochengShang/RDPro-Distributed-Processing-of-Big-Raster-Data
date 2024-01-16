@@ -22,37 +22,37 @@ rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0
 ```
 - Load & Write Distributed
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprowritedist datasets/Landsat8_Small output_dist.tif
+rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprowritedist datasets/Landsat8_Small_Size output_dist.tif
 ```
 
 - Load & Write Compatability
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprowritecomp datasets/Landsat8_Small output_comp.tif
+rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprowritecomp datasets/Landsat8_Small_Size output_comp.tif
 ```
 
 - MapPixel
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdpromappixel datasets/Landsat8_Small
+rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdpromappixel datasets/Landsat8_Small_Size
 ```
 
 - FilterPixel
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprofilter datasets/Landsat8_Small
+rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprofilter datasets/Landsat8_Small_Size
 ```
 
 - Overlay
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprooverlay Landsat8_Small output_overlay.tif
+rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprooverlay Landsat8_Small_Size output_overlay.tif
 ```
 
 - Reshape: reproject CRS
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprocrs Landsat8_Small output_reproject.tif
+rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprocrs Landsat8_Small_Size output_reproject.tif
 ```
 
 - Reshape: rescale
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdproscale datasets/Landsat8_Small output_rescale.tif
+rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdproscale datasets/Landsat8_Small_Size output_rescale.tif
 ```
 
 - SlidingWindow
