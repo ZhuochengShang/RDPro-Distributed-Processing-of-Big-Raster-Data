@@ -15,7 +15,7 @@ import java.io.File
   shortName = "rdproconv",
   description = "Computes sliding window convolution",
   inputArity = "1",
-  outputArity = "1"
+  outputArity = "0"
 )
 object RdproSlidingWindowConvolution extends CLIOperation{
   var factory: GeometryFactory = GeometryReader.DefaultGeometryFactory
