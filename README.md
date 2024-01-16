@@ -42,7 +42,7 @@ rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0
 
 - Overlay
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprooverlay datasets/CDL_2021_Small_Size datasets/Landsat8_Small_Size output_overlay.tif
+rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprooverlay datasets/CDL_2021_Small_Size datasets/Landsat8_Small_Size
 ```
 
 - Reshape: reproject CRS
