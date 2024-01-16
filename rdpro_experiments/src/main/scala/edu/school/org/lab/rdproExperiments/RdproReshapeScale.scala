@@ -41,7 +41,7 @@ object RdproReshapeScale extends CLIOperation{
     try {
       val inputRaster = inputs(0)
       val checkRaster = outputs(0)
-      val outputFileCompat = new File(checkRaster + ".dis.tif")
+      val outputFileCompat = new File(checkRaster)
 
       val rasterRDDFile: RasterRDD[Array[Int]] = sc.geoTiff(inputRaster)
 
