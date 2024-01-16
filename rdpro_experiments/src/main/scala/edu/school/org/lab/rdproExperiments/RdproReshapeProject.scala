@@ -43,7 +43,7 @@ object RdproReshapeProject extends CLIOperation{
     try {
       val inputRaster = inputs(0)
       val checkRaster = outputs(0)
-      val outputFileDistributed = new File(checkRaster + ".dis.tif")
+      val outputFileDistributed = new File(checkRaster)
 
       val opts =  new BeastOptions()
       val rasterRDDFile: RasterRDD[Array[Int]] = sc.geoTiff(inputRaster,0,opts)
