@@ -34,8 +34,6 @@ object RdproOverlay extends CLIOperation{
       val inputRaster_one = inputs(0) //  CDL
       val inputRaster_two = inputs(1) // Landsat8
 
-      val checkRaster = outputs(0)
-
       val reshapeRDDFile_cdl: RasterRDD[Int] = sc.geoTiff(inputRaster_one) // CDL
       val rasterRDDFile_lands: RasterRDD[Array[Int]] = sc.geoTiff(inputRaster_two) //Landsat8
       val rasterRDDFile_lands_single: RasterRDD[Int] = rasterRDDFile_lands.mapPixels(bands=>bands(0))
