@@ -16,7 +16,7 @@ import java.io.File
   shortName = "rdprosldw",
   description = "Computes sliding window",
   inputArity = "1",
-  outputArity = "1"
+  outputArity = "0"
 )
 object RdproSlidingWindow extends CLIOperation{
   var factory: GeometryFactory = GeometryReader.DefaultGeometryFactory
