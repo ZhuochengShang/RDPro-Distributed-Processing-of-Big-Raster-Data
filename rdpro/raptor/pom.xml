@@ -43,12 +43,12 @@
       <version>${project.version}</version>
       <scope>compile</scope>
     </dependency>
-    <dependency>
-      <groupId>edu.school.org.lab</groupId>
-      <artifactId>commontest</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>edu.school.org.lab</groupId>-->
+<!--      <artifactId>commontest</artifactId>-->
+<!--      <version>${project.version}</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>edu.school.org.lab</groupId>
       <artifactId>io</artifactId>

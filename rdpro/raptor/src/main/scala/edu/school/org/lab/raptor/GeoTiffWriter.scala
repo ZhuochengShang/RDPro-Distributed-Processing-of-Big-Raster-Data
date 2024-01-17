@@ -14,6 +14,7 @@
 package edu.school.org.lab.raptor
 
 import edu.school.org.lab.rdpro.common.BeastOptions
+import edu.school.org.lab.rdpro.util.Parallel2
 import edu.school.org.lab.rdpro.geolite.{ITile, RasterMetadata}
 import edu.school.org.lab.rdpro.io.tiff.{BigIFDEntry, IFDEntry, TiffConstants}
 import edu.school.org.lab.rdpro.util.{BitOutputStream, CompactLongArray, FileUtil, LZWCodec, LZWOutputStream, MathUtil, OperationParam}
@@ -343,57 +344,116 @@ object GeoTiffWriter extends Logging {
       // Each file is identified by RasterMetadata
       val resultsPerFile: Map[RasterMetadata, Array[(RasterMetadata, String, String, Array[Int], Array[Int])]] =
       interimResults.groupBy(_._1)
+      val resArray = resultsPerFile.zipWithIndex
       // Now, merge all partial files for each RasterMetadata
       val fileSystem = new Path(outPath).getFileSystem(opts.loadIntoHadoopConf())
       var fileIndex: Int = 0
-      for ((metadata, partialResults) <- resultsPerFile) {
-        val startGetInfoTime = System.nanoTime() // todo: start here set timmer
-        val compression: Int = opts.getInt(Compression, TiffConstants.COMPRESSION_LZW)
-        val fillValue: Int = opts.getInt(GeoTiffWriter.FillValue, -1)
+      val metedataTime0 = System.nanoTime()
+      Parallel2.forEach(resultsPerFile.size, (i1: Int, i2: Int) => {
+        for (i <- i1 until i2) {
+          val res: Map[RasterMetadata, Array[(RasterMetadata, String, String, Array[Int], Array[Int])]] = resArray.filter(_._2 == i).map(_._1)
+          val startGetInfoTime = System.nanoTime() // todo: start here set timmer
+          val compression: Int = opts.getInt(Compression, TiffConstants.COMPRESSION_LZW)
+          val fillValue: Int = opts.getInt(GeoTiffWriter.FillValue, -1)
 
-        val tileDataPaths: Array[String] = partialResults.map(_._2)
-        // We assume that all files have the same bitsPerSample and sampleFormats
-        val bitsPerSample: Array[Int] = partialResults(0)._4
-        val sampleFormats: Array[Int] = partialResults(0)._5
-        // Write a new tileOffsetsLengths file that combines all files after adjusting for concatenated data files
-        val filename = f"part-${fileIndex}%05d.tif"
-        val tileOffsetsLengthsPath = new Path(outPath, filename + "_metadata")
-        val tileOffsetsLengthsOut = fileSystem.create(tileOffsetsLengthsPath)
-        var deltaOffset: Long = 0
-        // Calculate the final tile offsets after accounting for concatenation
-        // Since data files are concatenated in order, the offsets will be shifted according to the accumulated size
-        for (tileInfoFile <- partialResults.map(x => x._3)) {
-          var totalSize: Long = 0
-          val tileInfoIn = fileSystem.open(new Path(tileInfoFile))
-          while (tileInfoIn.available() > 0) {
-            val tileID: Int = tileInfoIn.readInt()
-            val tileOffset: Long = tileInfoIn.readLong()
-            val tileLength: Long = tileInfoIn.readLong()
-            assert(tileLength > 0, "Zero-length tiles are not expected")
-            tileOffsetsLengthsOut.writeInt(tileID)
-            tileOffsetsLengthsOut.writeLong(tileOffset + deltaOffset)
-            tileOffsetsLengthsOut.writeLong(tileLength)
-            totalSize += tileLength
+          val metadata = res.map(_._1).toArray
+          val partialResults = res.map(_._2).toArray
+
+          val partialResultsArray = partialResults(0)
+
+          val tileDataPaths: Array[String] = partialResultsArray.map(_._2)
+          // We assume that all files have the same bitsPerSample and sampleFormats
+          val bitsPerSample: Array[Int] = partialResultsArray(0)._4
+          val sampleFormats: Array[Int] = partialResultsArray(0)._5
+          // Write a new tileOffsetsLengths file that combines all files after adjusting for concatenated data files
+          val filename = f"part-${i}%05d.tif" //f"part-${fileIndex}%05d.tif"
+          val tileOffsetsLengthsPath = new Path(outPath, filename + "_metadata")
+          val tileOffsetsLengthsOut = fileSystem.create(tileOffsetsLengthsPath)
+          var deltaOffset: Long = 0
+          // Calculate the final tile offsets after accounting for concatenation
+          // Since data files are concatenated in order, the offsets will be shifted according to the accumulated size
+          for (tileInfoFile <- partialResultsArray.map(x => x._3)) {
+            var totalSize: Long = 0
+            val tileInfoIn = fileSystem.open(new Path(tileInfoFile))
+            while (tileInfoIn.available() > 0) {
+              val tileID: Int = tileInfoIn.readInt()
+              val tileOffset: Long = tileInfoIn.readLong()
+              val tileLength: Long = tileInfoIn.readLong()
+              assert(tileLength > 0, "Zero-length tiles are not expected")
+              tileOffsetsLengthsOut.writeInt(tileID)
+              tileOffsetsLengthsOut.writeLong(tileOffset + deltaOffset)
+              tileOffsetsLengthsOut.writeLong(tileLength)
+              totalSize += tileLength
+            }
+            tileInfoIn.close()
+            deltaOffset += totalSize
+            // Delete the temporary file
+            fileSystem.delete(new Path(tileInfoFile), false)
           }
-          tileInfoIn.close()
-          deltaOffset += totalSize
-          // Delete the temporary file
-          fileSystem.delete(new Path(tileInfoFile), false)
-        }
-        tileOffsetsLengthsOut.close()
-        // todo: set timmer
-        val endGetInfoTime = System.nanoTime();
-        totalTimeGetInfo = totalTimeGetInfo + (endGetInfoTime - startGetInfoTime)
+          tileOffsetsLengthsOut.close()
+          // todo: set timmer
+          val endGetInfoTime = System.nanoTime();
+          totalTimeGetInfo = totalTimeGetInfo + (endGetInfoTime - startGetInfoTime)
 
-        val t1: Long = System.nanoTime()
-        val geoTiffPath: Path = new Path(new Path(outPath), filename)
-        prependGeoTiffHeader(metadata, bitsPerSample, sampleFormats, compression, tileOffsetsLengthsPath,
-          fillValue, geoTiffPath, tileDataPaths.map(new Path(_)), opts)
-        val t2: Long = System.nanoTime()
-        totalTimePrepenhead = totalTimePrepenhead + (t2 - t1)
-        totalFileConcat = totalFileConcat + tileDataPaths.length
-        fileIndex += 1
-      }
+          val t1: Long = System.nanoTime()
+          val geoTiffPath: Path = new Path(new Path(outPath), filename)
+          prependGeoTiffHeader(metadata(0), bitsPerSample, sampleFormats, compression, tileOffsetsLengthsPath,
+            fillValue, geoTiffPath, tileDataPaths.map(new Path(_)), opts)
+          val t2: Long = System.nanoTime()
+          totalTimePrepenhead = totalTimePrepenhead + (t2 - t1)
+          totalFileConcat = totalFileConcat + tileDataPaths.length
+          fileIndex += 1
+        }
+      })
+      /**
+       * for ((metadata, partialResults) <- resultsPerFile) {
+       * val startGetInfoTime = System.nanoTime() // todo: start here set timmer
+       * val compression: Int = opts.getInt(Compression, TiffConstants.COMPRESSION_LZW)
+       * val fillValue: Int = opts.getInt(GeoTiffWriter.FillValue, -1)
+       *
+       * val tileDataPaths: Array[String] = partialResults.map(_._2)
+       * // We assume that all files have the same bitsPerSample and sampleFormats
+       * val bitsPerSample: Array[Int] = partialResults(0)._4
+       * val sampleFormats: Array[Int] = partialResults(0)._5
+       * // Write a new tileOffsetsLengths file that combines all files after adjusting for concatenated data files
+       * val filename = f"part-${fileIndex}%05d.tif"
+       * val tileOffsetsLengthsPath = new Path(outPath, filename + "_metadata")
+       * val tileOffsetsLengthsOut = fileSystem.create(tileOffsetsLengthsPath)
+       * var deltaOffset: Long = 0
+       * // Calculate the final tile offsets after accounting for concatenation
+       * // Since data files are concatenated in order, the offsets will be shifted according to the accumulated size
+       * for (tileInfoFile <- partialResults.map(x => x._3)) {
+       * var totalSize: Long = 0
+       * val tileInfoIn = fileSystem.open(new Path(tileInfoFile))
+       * while (tileInfoIn.available() > 0) {
+       * val tileID: Int = tileInfoIn.readInt()
+       * val tileOffset: Long = tileInfoIn.readLong()
+       * val tileLength: Long = tileInfoIn.readLong()
+       * assert(tileLength > 0, "Zero-length tiles are not expected")
+       * tileOffsetsLengthsOut.writeInt(tileID)
+       * tileOffsetsLengthsOut.writeLong(tileOffset + deltaOffset)
+       * tileOffsetsLengthsOut.writeLong(tileLength)
+       * totalSize += tileLength
+       * }
+       * tileInfoIn.close()
+       * deltaOffset += totalSize
+       * // Delete the temporary file
+       * fileSystem.delete(new Path(tileInfoFile), false)
+       * }
+       * tileOffsetsLengthsOut.close()
+       * // todo: set timmer
+       * val endGetInfoTime = System.nanoTime();
+       * totalTimeGetInfo = totalTimeGetInfo + (endGetInfoTime - startGetInfoTime)
+       *
+       * val t1: Long = System.nanoTime()
+       * val geoTiffPath: Path = new Path(new Path(outPath), filename)
+       * prependGeoTiffHeader(metadata, bitsPerSample, sampleFormats, compression, tileOffsetsLengthsPath,
+       * fillValue, geoTiffPath, tileDataPaths.map(new Path(_)), opts)
+       * val t2: Long = System.nanoTime()
+       * totalTimePrepenhead = totalTimePrepenhead + (t2 - t1)
+       * totalFileConcat = totalFileConcat + tileDataPaths.length
+       * fileIndex += 1
+       * } * */
       logInfo("Time for go through tiles and get geotiff info: " + (totalTimeGetInfo) / 1E9)
       logInfo(" Total time to PrependGeoTiffHeader: " + (totalTimePrepenhead) / 1E9)
       logInfo(" Total files to concat : " + (totalFileConcat))
