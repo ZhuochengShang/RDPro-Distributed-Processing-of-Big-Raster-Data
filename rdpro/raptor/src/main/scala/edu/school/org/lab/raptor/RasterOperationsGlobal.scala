@@ -35,13 +35,26 @@ object RasterOperationsGlobal {
       val tileID = metadata.getTileIDAtPixel(p._1, p._2)
       (tileID, p)
     })
-    pixelsAssignedToTiles.groupByKey()
-      .map(t => {
-        val tile = new MemoryTile[T](t._1, metadata)
-        for (p <- t._2)
-          tile.setPixelValue(p._1, p._2, p._3)
-        tile
-      })
+    val zeroValues = Array[(Int, Int, T)]()
+    pixelsAssignedToTiles.aggregateByKey(zeroValues)(
+      (u: Array[(Int, Int, T)], v: (Int, Int, T)) => u :+ ((v._1, v._2, v._3)),
+      (u1, u2) => {
+        u1 :+ u2
+        u1
+      }
+    ).map(t => {
+      val tile = new MemoryTile[T](t._1, metadata)
+      for (p <- t._2)
+        tile.setPixelValue(p._1, p._2, p._3)
+      tile
+    })
+    //    pixelsAssignedToTiles.groupByKey()
+    //      .map(t => {
+    //        val tile = new MemoryTile[T](t._1, metadata)
+    //        for (p <- t._2)
+    //          tile.setPixelValue(p._1, p._2, p._3)
+    //        tile
+    //      })
   }
 
   /**
