@@ -1,0 +1,5 @@
+ID	File Name	Record Count	NonEmpty Count	NumPoints	Data Size	Sum_x	Sum_y	Sum_z	Sum_w	Geometry	xmin	ymin	zmin	wmin	xmax	ymax	zmax	wmax
+0	part-00000.csv	4	0	0	97	0.0	0.0	0.0	0.0		133.0	728.0	192.0	767.0	784.0	981.0	830.0	1000.0
+1	part-00001.csv	4	0	0	96	0.0	0.0	0.0	0.0		309.0	364.0	368.0	454.0	557.0	717.0	627.0	788.0
+2	part-00002.csv	4	0	0	98	0.0	0.0	0.0	0.0		277.0	104.0	324.0	116.0	954.0	160.0	1000.0	246.0
+3	part-00003.csv	2	0	0	45	0.0	0.0	0.0	0.0		617.0	16.0	697.0	51.0	913.0	76.0	924.0	101.0
