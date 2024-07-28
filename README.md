@@ -18,59 +18,59 @@ mvn clean package -DskipTests
 ```
 ### run command line of experiments
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar <operation> <required arguments>
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar <operation> <required arguments>
 ```
 - Load & Write Distributed
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprowritedist datasets/Landsat8_City output_dist.tif
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar rdprowritedist datasets/Landsat8_City output_dist.tif
 ```
 
 - Load & Write Compatability
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprowritecomp datasets/Landsat8_City output_comp.tif
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar rdprowritecomp datasets/Landsat8_City output_comp.tif
 ```
 
 - MapPixel
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdpromappixel datasets/Landsat8_City
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar rdpromappixel datasets/Landsat8_City
 ```
 
 - FilterPixel
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprofilter datasets/Landsat8_City
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar rdprofilter datasets/Landsat8_City
 ```
 
 - Overlay
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprooverlay datasets/CDL_2021_City datasets/Landsat8_City
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar rdprooverlay datasets/CDL_2021_City datasets/Landsat8_City
 ```
 
 - Reshape: reproject CRS
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprocrs datasets/Landsat8_City output_reproject.tif
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar rdprocrs datasets/Landsat8_City output_reproject.tif
 ```
 
 - Reshape: rescale
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdproscale datasets/Landsat8_City output_rescale.tif
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar rdproscale datasets/Landsat8_City output_rescale.tif
 ```
 
 - SlidingWindow
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdprosldw datasets/CDL_2021_City
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar rdprosldw datasets/CDL_2021_City
 ```
 
 - Convolution
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdproconv datasets/CDL_2021_City
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar rdproconv datasets/CDL_2021_City
 ```
 
 - Flatten
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdproflatten datasets/CDL_2021_City
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar rdproflatten datasets/CDL_2021_City
 ```
 
 - Rasterize
 ```shell
-rdpro-0.10.0-SNAPSHOT-bin/rdpro-0.10.0-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.0-SNAPSHOT.jar rdproraster 12000 12000 output_raster.tif
+rdpro-0.10.1-SNAPSHOT-bin/rdpro-0.10.1-SNAPSHOT/bin/rdpro --master spark://127.0.0.1:7077 --jars rdpro-experiments-0.10.1-SNAPSHOT.jar rdproraster 12000 12000 output_raster.tif
 ```
