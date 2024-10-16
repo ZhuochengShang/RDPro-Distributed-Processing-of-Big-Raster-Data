@@ -2,6 +2,9 @@
 
 
 ## Documentation
+Full detailed documentation of RDPro: 
+https://bitbucket.org/bdlabucr/beast/src/master/doc/rdpro.md
+
 ### Dataset
 Data used in this project is include under the /datasets folder.
 Include small size for CDL and both samll and medium size for Landsat8.
